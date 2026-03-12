@@ -1,9 +1,5 @@
 <?php
 
-if (!defined('ABSPATH')) {
-    exit;
-}
-
 function testwp_render_events($atts) {
 
 	$atts = shortcode_atts(array(

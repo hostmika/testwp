@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('ABSPATH')) {
-    exit;
+    exit; // Si ABSPATH n'est pas défini, on arrête tout
 }
 
 function testwp_render_events($atts) {
