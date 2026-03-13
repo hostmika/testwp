@@ -48,23 +48,25 @@ Filtrer par genre :
 - Le filtre par genre est conservé pendant le chargement
 
 ## Structure du plugin
+```
 testwp/
-├── testwp.php # Fichier principal
-├── README.md # Documentation
-├── index.php # Sécurité
+├── testwp.php                    # Fichier principal
+├── README.md                     # Documentation
+├── index.php                     # Sécurité
 ├── assets/
-│ ├── css/
-│ │ ├── index.php
-│ │ └── events.css # Styles des événements
-│ └── js/
-│ ├── index.php
-│ └── events.js # Script AJAX pour "Voir plus"
+│   ├── css/
+│   │   ├── index.php
+│   │   └── events.css            # Styles des événements
+│   └── js/
+│       ├── index.php
+│       └── events.js             # Script AJAX pour "Voir plus"
 └── includes/
-├── index.php
-├── post-type.php # Déclaration du CPT event
-├── taxonomies.php # Déclaration des taxonomies
-├── meta-box.php # Gestion des champs lieu et tarif
-└── shortcode-events.php # Shortcode et logique AJAX
+    ├── index.php
+    ├── post-type.php             # Déclaration du CPT event
+    ├── taxonomies.php            # Déclaration des taxonomies
+    ├── meta-box.php              # Gestion des champs lieu et tarif
+    └── shortcode-events.php      # Shortcode et logique AJAX
+```
 
 ## Fichiers JavaScript et AJAX
 
