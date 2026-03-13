@@ -6,64 +6,64 @@ if (!defined('ABSPATH')) {
 
 function testwp_render_events($atts) {
 
-	$atts = shortcode_atts(array(
-		'genre' => '',
-	), $atts);
+    $atts = shortcode_atts(array(
+        'genre' => '',
+    ), $atts);
 
-	$args = array(
-		'post_type' => 'event',
-		'posts_per_page' => -1,
-	);
+    $args = array(
+        'post_type' => 'event',
+        'posts_per_page' => -1,
+    );
 
-	if (!empty($atts['genre'])) {
-		$args['tax_query'] = array(
-			array(
-				'taxonomy' => 'event_genre',
-				'field'    => 'slug',
-				'terms'    => sanitize_title($atts['genre']),
-			),
-		);
-	}
+    if (!empty($atts['genre'])) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'event_genre',
+                'field'    => 'slug',
+                'terms'    => sanitize_title($atts['genre']),
+            ),
+        );
+    }
 
-	$query = new WP_Query($args);
+    $query = new WP_Query($args);
 
-	ob_start();
+    ob_start();
 
-	if ($query->have_posts()) {
+    if ($query->have_posts()) {
 
-		echo '<div class="events-list">';
+        echo '<div class="events-list">';
 
-		while ($query->have_posts()) {
+        while ($query->have_posts()) {
 
-			$query->the_post();
+            $query->the_post();
 
-			$lieu = get_post_meta(get_the_ID(), '_event_lieu', true);
-			$tarif = get_post_meta(get_the_ID(), '_event_tarif', true);
+            $lieu = get_post_meta(get_the_ID(), '_event_lieu', true);
+            $tarif = get_post_meta(get_the_ID(), '_event_tarif', true);
 
-			echo '<div class="event">';
-			echo '<h3>' . esc_html(get_the_title()) . '</h3>';
+            echo '<div class="event">';
+            echo '<p class="event-title">' . esc_html(get_the_title()) . '</p>';
 
-			if ($lieu) {
-				echo '<p><strong>Lieu :</strong> ' . esc_html($lieu) . '</p>';
-			}
+            if ($lieu) {
+                echo '<p><strong>Lieu :</strong> ' . esc_html($lieu) . '</p>';
+            }
 
-			if ($tarif) {
-				echo '<p><strong>Tarif :</strong> ' . esc_html($tarif) . '</p>';
-			}
+            if ($tarif) {
+                echo '<p><strong>Tarif :</strong> ' . esc_html($tarif) . '</p>';
+            }
 
-			echo '</div>';
+            echo '</div>';
 
-		}
+        }
 
-		echo '</div>';
+        echo '</div>';
 
-	} else {
-		echo '<p>Aucun événement trouvé pour ce genre.</p>';
-	}
+    } else {
+        echo '<p>Aucun événement trouvé pour ce genre.</p>';
+    }
 
-	wp_reset_postdata();
+    wp_reset_postdata();
 
-	return ob_get_clean();
+    return ob_get_clean();
 
 }
 
