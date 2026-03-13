@@ -15,6 +15,15 @@ function testwp_render_events($atts) {
 		'posts_per_page' => -1,
 	);
 
+	if (!empty($atts['genre'])) {
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'event_genre',
+				'field'    => 'slug',
+				'terms'    => sanitize_title($atts['genre']),
+			),
+		);
+	}
 
 	$query = new WP_Query($args);
 
@@ -48,6 +57,8 @@ function testwp_render_events($atts) {
 
 		echo '</div>';
 
+	} else {
+		echo '<p>Aucun événement trouvé pour ce genre.</p>';
 	}
 
 	wp_reset_postdata();
