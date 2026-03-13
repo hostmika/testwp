@@ -30,6 +30,19 @@ function testwp_enqueue_styles() {
             'all'
         );
 
+        wp_enqueue_script(
+            'testwp-events',
+            TESTWP_URL . 'assets/js/events.js',
+            array('jquery'),
+            TESTWP_VERSION,
+            true
+        );
+
+        wp_localize_script('testwp-events', 'testwpAjax', array(
+            'url'   => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('testwp_loadmore'),
+        ));
+
     }
 
 }
