@@ -1,0 +1,38 @@
+# IDEs
+.vscode/
+.idea/
+*.sublime-*
+
+# Système
+.DS_Store
+Thumbs.db
+*.log
+
+# WordPress
+wp-content/uploads/
+wp-config.php
+*.sql
+*.bak
+
+# Composer / Node (si vous en utilisez)
+/vendor/
+/node_modules/
+package-lock.json
+composer.lock
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+error_log
+
+# GitHub
+*.diff
+*.patch
+
+/.history/
